@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2804c22-7a40-49a6-b29d-773d7f5d17dc" name="Changes" comment="Convert function component to arrow function" />
+    <list default="true" id="a2804c22-7a40-49a6-b29d-773d7f5d17dc" name="Changes" comment="Set up new create-react-app with node backend">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +51,7 @@
       <option name="presentableId" value="Default" />
       <updated>1650449848674</updated>
       <workItem from="1650449850015" duration="1089000" />
-      <workItem from="1650457576044" duration="11633000" />
+      <workItem from="1650457576044" duration="11823000" />
     </task>
     <task id="LOCAL-00001" summary="Remove unnecessary files">
       <created>1650478802015</created>
@@ -70,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650478849243</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Set up new create-react-app with node backend">
+      <created>1650482668725</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650482668725</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,12 +99,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/client" />
     </ignored-roots>
     <MESSAGE value="Remove unnecessary files" />
     <MESSAGE value="Update" />
     <MESSAGE value="Convert function component to arrow function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Convert function component to arrow function" />
+    <MESSAGE value="Set up new create-react-app with node backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set up new create-react-app with node backend" />
   </component>
 </project>
