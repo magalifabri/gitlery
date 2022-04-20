@@ -1,12 +1,15 @@
 const path = require('path');
 const express = require("express");
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
 app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
+    res.json({
+        message: "Hello from server!"
+    });
 });
 
 app.listen(PORT, () => {
@@ -18,7 +21,7 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
 app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
+    res.json({message: "Hello from server!"});
 });
 
 // All other GET requests not handled before will return our React app
