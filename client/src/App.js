@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import RepoCards from "./components/RepoCards";
 
 
 const App = () => {
@@ -36,9 +37,10 @@ const App = () => {
 
     return (
         <>
-            <input onKeyDown={handleInputKeyDown} type="text"/>
+            <input className="username-input" onKeyDown={handleInputKeyDown} type="text"/>
             {/*<p>{!data ? "Loading..." : data}</p>*/}
-            {loading ? "Loading..." : null}
+            {loading ? <p>Loading...</p> : null}
+            <RepoCards repos={repos} />
         </>
     );
 }
