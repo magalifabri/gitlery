@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styling/RepoCards.scss';
 
 const RepoCards = ({repos}) => {
     return (

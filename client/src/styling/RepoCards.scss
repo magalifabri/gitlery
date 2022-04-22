@@ -1,0 +1,12 @@
+@use 'shared';
+
+.repo-cards-wrapper {
+    width: 100%;
+}
+
+.card {
+
+    &__image {
+        width: 100%;
+    }
+}

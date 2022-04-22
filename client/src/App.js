@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import RepoCards from "./components/RepoCards";
+import './styling/general.scss';
 
 
 const App = () => {
