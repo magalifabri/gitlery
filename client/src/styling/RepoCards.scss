@@ -1,12 +1,39 @@
 @use 'shared';
 
-.repo-cards-wrapper {
-    width: 100%;
+.grid-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: max(5rem, 5vw);
 }
 
-.card {
+.repo-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    &__image {
+    &__screenshot {
+        height: 100%;
         width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    &--wide &__screenshot {
+        max-height: 250px;
+    }
+
+    &--tall &__screenshot {
+        max-width: 250px;
+    }
+
+    &__link {
+        color: #1c88bb;
+        text-underline-offset: .5rem;
+        margin-top: 2rem;
+        font-family: 'Noto Serif', serif;
+        font-style: italic;
     }
 }
