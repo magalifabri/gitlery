@@ -37,6 +37,7 @@ const RepoCards = ({repos, setSelectedRepo}) => {
                         <a className="repo-card__link"
                            href={repo.html_url}
                            target="_blank"
+                           rel="noreferrer"
                         >{repo.name}</a>
                     </div>
                 )
