@@ -1,30 +1,22 @@
 import React, {useEffect, useState} from "react";
 import RepoCards from "./components/RepoCards";
+import Modal from "./components/Modal";
 import './styling/general.scss';
 
 const LOCAL_STORAGE_REPOS_KEY = "repos";
 
 
 const App = () => {
-    // const [data, setData] = useState(null);
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(false);
-
-
-    // useEffect(() => {
-    //     fetch("/api")
-    //         .then((res) => res.json())
-    //         .then((data) => setData(data.message));
-    // }, []);
+    const [selectedRepo, setSelectedRepo] = useState('');
 
 
     // load repos from local storage
     useEffect(() => {
-        console.log('loading repos?');
         const storedRepos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_REPOS_KEY));
 
         if (storedRepos && storedRepos.length) {
-            console.log('yes');
             setRepos(storedRepos);
         }
     }, []);
@@ -32,7 +24,6 @@ const App = () => {
 
     // save repos to local storage
     useEffect(() => {
-        console.log('storing repos')
         localStorage.setItem(LOCAL_STORAGE_REPOS_KEY, JSON.stringify(repos));
     }, [repos]);
 
@@ -59,10 +50,22 @@ const App = () => {
 
     return (
         <>
-            <input className="username-input" onKeyDown={handleInputKeyDown} type="text"/>
-            {/*<p>{!data ? "Loading..." : data}</p>*/}
+            <input className="username-input" onKeyDown={handleInputKeyDown}
+                   type="text"
+            />
+
             {loading ? <p>Loading...</p> : null}
-            <RepoCards repos={repos} />
+
+            <RepoCards repos={repos}
+                       setSelectedRepo={setSelectedRepo}
+            />
+
+            {
+                selectedRepo &&
+                <Modal repo={repos.find(repo => repo.id === selectedRepo)}
+                       setSelectedRepo={setSelectedRepo}
+                />
+            }
         </>
     );
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import '../styling/RepoCards.scss';
 
-const RepoCards = ({repos}) => {
+
+const RepoCards = ({repos, setSelectedRepo}) => {
 
     const getClassNames = (event) => {
         const width = event.target.naturalWidth;
@@ -15,22 +16,33 @@ const RepoCards = ({repos}) => {
     }
 
 
+    const openModal = event => {
+        const repoId = event.target.id;
+
+        setSelectedRepo(repoId);
+    }
+
+
     return (
-        <div className="grid-wrapper">
-            {
-                repos.map(repo => {
-                    return (
-                        <div className="repo-card">
-                            <img className="repo-card__screenshot"
-                                src={repo.screenshotUrl} alt=""
-                                onLoad={getClassNames}
-                            />
-                            <a className="repo-card__link" href={repo.html_url}>{repo.name}</a>
-                        </div>
-                    )
-                })
-            }
-        </div>
+        <div className="grid-wrapper"> {
+            repos.map(repo => {
+                return (
+                    <div className="repo-card">
+                        <img key={repo.id}
+                             id={repo.id}
+                             className="repo-card__screenshot"
+                             src={repo.screenshotUrl} alt=""
+                             onLoad={getClassNames}
+                             onClick={openModal}
+                        />
+                        <a className="repo-card__link"
+                           href={repo.html_url}
+                           target="_blank"
+                        >{repo.name}</a>
+                    </div>
+                )
+            })
+        } </div>
     );
 };
 
