@@ -3,6 +3,7 @@ const express = require("express");
 require('dotenv').config();
 const fetch = require("node-fetch");
 const cheerio = require("cheerio");
+const {uuid} = require('uuidv4');
 
 const PORT = process.env.PORT || 3001;
 
@@ -80,6 +81,7 @@ const getReposWithScreenshots = async repos => {
                     screenshotUrl: screenshotUrl,
                     description: repo.description,
                     homepage: repo.homepage,
+                    id: uuid(),
                 });
             }
         }
@@ -105,12 +107,12 @@ app.listen(PORT, () => {
 });
 
 // Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+// app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
-app.get("/api", (req, res) => {
-    res.json({message: "Hello from server!"});
-});
+// app.get("/api", (req, res) => {
+//     res.json({message: "Hello from server!"});
+// });
 
 // Handle GET requests to /get-repos route
 app.get("/get-repos", async (req, res) => {
@@ -124,6 +126,6 @@ app.get("/get-repos", async (req, res) => {
 });
 
 // All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+// });
