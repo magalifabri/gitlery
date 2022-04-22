@@ -1,6 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import RepoCards from "./components/RepoCards";
 import './styling/general.scss';
+
+const LOCAL_STORAGE_REPOS_KEY = "repos";
 
 
 const App = () => {
@@ -14,6 +16,25 @@ const App = () => {
     //         .then((res) => res.json())
     //         .then((data) => setData(data.message));
     // }, []);
+
+
+    // load repos from local storage
+    useEffect(() => {
+        console.log('loading repos?');
+        const storedRepos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_REPOS_KEY));
+
+        if (storedRepos && storedRepos.length) {
+            console.log('yes');
+            setRepos(storedRepos);
+        }
+    }, []);
+
+
+    // save repos to local storage
+    useEffect(() => {
+        console.log('storing repos')
+        localStorage.setItem(LOCAL_STORAGE_REPOS_KEY, JSON.stringify(repos));
+    }, [repos]);
 
 
     const getRepos = async requestedUser => {
