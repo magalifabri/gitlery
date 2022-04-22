@@ -11,11 +11,19 @@ const Modal = ({repo, setSelectedRepo}) => {
     }
 
 
+    const showImage = (event) => {
+        event.target.style.opacity = '1';
+    }
+
+
     return (
         <div className="modal"
-        onClick={removeModal}
+             onClick={removeModal}
         >
-            <img className="modal__image" src={repo.screenshotUrl} alt=""/>
+            <img className="modal__image"
+                 onLoad={showImage}
+                 src={repo.screenshotUrl} alt=""
+            />
         </div>
     );
 };
