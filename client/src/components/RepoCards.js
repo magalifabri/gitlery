@@ -27,9 +27,8 @@ const RepoCards = ({repos, setSelectedRepo}) => {
         <div className="grid-wrapper"> {
             repos.map(repo => {
                 return (
-                    <div className="repo-card">
-                        <img key={repo.id}
-                             id={repo.id}
+                    <div key={repo.id} className="repo-card">
+                        <img id={repo.id}
                              className="repo-card__screenshot"
                              src={repo.screenshotUrl} alt=""
                              onLoad={getClassNames}
