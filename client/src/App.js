@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import Header from "./components/Header";
 import RepoCards from "./components/RepoCards";
 import Modal from "./components/Modal";
 import './styling/general.scss';
@@ -65,8 +66,12 @@ const App = () => {
 
     return (
         <>
-            <input className="username-input" onKeyDown={handleInputKeyDown}
+            <Header/>
+
+            <input className="username-input"
+                   onKeyDown={handleInputKeyDown}
                    type="text"
+                   placeholder="github username"
             />
 
             {loading ? <p>Loading...</p> : null}

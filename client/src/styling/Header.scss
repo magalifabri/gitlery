@@ -1,0 +1,18 @@
+@use 'shared';
+
+.header {
+    margin: max(1rem, 1vw) 0;
+
+    &__title {
+        font-family: 'Lora', serif;
+        font-weight: 400;
+        font-style: italic;
+    }
+
+    &__subtitle {
+        letter-spacing: .5px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+}
