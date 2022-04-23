@@ -39,12 +39,10 @@ const Modal = ({repo, setSelectedRepo}) => {
                ref={nameRef}
             >{repo.name}</p>
 
-            <div className="modal__image-container">
-                <img className="modal__image"
-                     onLoad={showImage}
-                     src={repo.screenshotUrl} alt=""
-                />
-            </div>
+            <img className="modal__image"
+                 onLoad={showImage}
+                 src={repo.screenshotUrl} alt=""
+            />
 
             {
                 repo.description &&
