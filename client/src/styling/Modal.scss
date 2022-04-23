@@ -8,7 +8,10 @@
     height: 100vh;
     padding: 1rem;
 
-    background-color: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(
+                    rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.85)
+    );
 
     color: shared.$white;
 
@@ -17,6 +20,16 @@
     align-items: center;
     gap: 1rem;
     justify-content: center;
+
+    &__name {
+        transform: translateY(-2rem);
+        opacity: 0;
+        transition: all .3s ease;
+
+        font-family: 'Lora', serif;
+        font-style: italic;
+        font-size: 1.5rem;
+    }
 
     &__image {
         min-height: 0;
@@ -32,21 +45,13 @@
         transition: all .3s ease;
     }
 
-    &__name {
-        transform: translateY(-2rem);
-        opacity: 0;
-        transition: all .3s ease;
-
-        font-family: 'Noto Serif', serif;
-        font-style: italic;
-    }
-
     &__description {
         transform: translateY(2rem);
         opacity: 0;
         transition: all .4s ease .1s;
 
         max-width: 50ch;
+        text-align: center;
     }
 
     &__links-wrapper {
@@ -59,11 +64,12 @@
         gap: 2rem;
     }
 
-    &__repo-link {
-        color: shared.$white;
-    }
-
+    &__repo-link,
     &__homepage {
         color: shared.$white;
+        text-underline-offset: .25rem;
+        text-transform: uppercase;
+        font-size: .675rem;
+        letter-spacing: 1px;
     }
 }
