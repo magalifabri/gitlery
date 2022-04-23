@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import '../styling/Modal.scss';
 
 
@@ -8,9 +8,24 @@ const Modal = ({repo, screenshotOrientation, setSelectedRepo}) => {
     const linksRef = useRef();
 
 
-    const removeModal = (event) => {
+    useEffect(() => {
+        const closeModalOnEcs = ({key}) => {
+            if (key === 'Escape') {
+                setSelectedRepo(null);
+            }
+        };
+
+        window.addEventListener('keydown', closeModalOnEcs);
+
+        return () => {
+            window.removeEventListener('keydown', closeModalOnEcs);
+        }
+    }, []);
+
+
+    const closeModalOnClick = (event) => {
         if (event.target.classList.contains('modal')) {
-            setSelectedRepo('');
+            setSelectedRepo(null);
         }
     }
 
@@ -50,7 +65,7 @@ const Modal = ({repo, screenshotOrientation, setSelectedRepo}) => {
 
     return (
         <div className={getModalClassNames()}
-             onClick={removeModal}
+             onClick={closeModalOnClick}
         >
             <p className="modal__name"
                ref={nameRef}
