@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import '../styling/Modal.scss';
 
 
-const Modal = ({repo, setSelectedRepo}) => {
+const Modal = ({repo, screenshotOrientation, setSelectedRepo}) => {
     const nameRef = useRef();
     const descriptionRef = useRef();
     const linksRef = useRef();
@@ -31,8 +31,25 @@ const Modal = ({repo, setSelectedRepo}) => {
     }
 
 
+    const getModalClassNames = () => {
+        let classNames = 'modal';
+
+        if (screenshotOrientation === 'repo-card--tall') {
+            classNames += ' modal--tall-image';
+        } else {
+            classNames += ' modal--wide-image';
+        }
+
+        if (repo.description) {
+            classNames += ' modal--with-description';
+        }
+
+        return classNames;
+    }
+
+
     return (
-        <div className="modal"
+        <div className={getModalClassNames()}
              onClick={removeModal}
         >
             <p className="modal__name"

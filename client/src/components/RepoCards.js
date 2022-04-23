@@ -19,7 +19,7 @@ const RepoCards = ({repos, setSelectedRepo}) => {
     const openModal = event => {
         const repoId = event.target.id;
 
-        setSelectedRepo(repoId);
+        setSelectedRepo({id: repoId, screenshotOrientation: event.target.parentNode.classList[1]});
     }
 
 

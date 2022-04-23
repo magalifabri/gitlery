@@ -9,7 +9,7 @@ const LOCAL_STORAGE_REPOS_KEY = "repos";
 const App = () => {
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [selectedRepo, setSelectedRepo] = useState('');
+    const [selectedRepo, setSelectedRepo] = useState(null);
 
 
     // load repos from local storage
@@ -34,6 +34,20 @@ const App = () => {
             .then((data) => setRepos(data.repos));
     }
 
+    //
+    // const loadImages = () => {
+    //     const newRepos = [...repos];
+    //
+    //     newRepos.map(repo => {
+    //         const screenshot = new Image();
+    //         screenshot.onload = () => console.log('loaded');
+    //         screenshot.src = repo.screenshotUrl;
+    //         return repo['screenshot'] = screenshot;
+    //     });
+    //
+    //     setRepos(newRepos);
+    // }
+
 
     const handleInputKeyDown = async ({key, target}) => {
         if (key === 'Enter') {
@@ -43,6 +57,7 @@ const App = () => {
             await getRepos(requestedUser);
             setLoading(false);
 
+            // loadImages();
             console.log(repos);
         }
     };
@@ -62,7 +77,8 @@ const App = () => {
 
             {
                 selectedRepo &&
-                <Modal repo={repos.find(repo => repo.id === selectedRepo)}
+                <Modal repo={repos.find(repo => repo.id === selectedRepo.id)}
+                       screenshotOrientation={selectedRepo.screenshotOrientation}
                        setSelectedRepo={setSelectedRepo}
                 />
             }
