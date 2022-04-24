@@ -6,6 +6,8 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: max(5rem, 5vw);
+
+    padding: 0 max(3rem, 3vw);
 }
 
 .repo-card {
@@ -34,10 +36,11 @@
     }
 
     &__link {
-        color: #1c88bb;
+        color: shared.$black;
         text-underline-offset: .5rem;
-        margin-top: 2rem;
-        font-family: 'Noto Serif', serif;
+        margin-top: 1.5rem;
+        font-family: 'Lora', serif;
         font-style: italic;
+        font-size: 1.2rem;
     }
 }
