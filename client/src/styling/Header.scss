@@ -2,7 +2,7 @@
 
 .header {
     margin-bottom: 2rem;
-    padding: 1rem 3rem 1rem 1rem;
+    padding: 1rem;
 
     display: flex;
     flex-wrap: wrap;
@@ -39,28 +39,5 @@
         font-size: 1rem;
         text-transform: uppercase;
         font-weight: 400;
-    }
-}
-
-.menu-btn {
-    position: absolute;
-    z-index: 1;
-    height: 3rem;
-    width: 3rem;
-    top: .75rem;
-    right: .25rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: .3rem;
-
-    &__dot {
-        display: block;
-        width: 5px;
-        height: 5px;
-        background-color: shared.$black;
-        border-radius: 50%;
     }
 }

@@ -68,11 +68,26 @@ const App = () => {
         <>
             <Header/>
 
-            <input className="username-input"
-                   onKeyDown={handleInputKeyDown}
-                   type="text"
-                   placeholder="github username"
-            />
+            {
+                !repos.length ?
+                    <section className="intro">
+                        <p>Enter a GitHub username to create a Gitlery (GitHub
+                            gallery) for that user</p>
+
+                        <input className="username-input"
+                               onKeyDown={handleInputKeyDown}
+                               type="text"
+                               placeholder="GitHub username"
+                        />
+                    </section>
+                    :
+                    <section className="intro">
+                        {/*<p>viewing gitlery for [username]</p>*/}
+                        {/*<button>save link</button>*/}
+                        <button onClick={() => setRepos([])}>new gitlery
+                        </button>
+                    </section>
+            }
 
             {loading ? <p>Loading...</p> : null}
 

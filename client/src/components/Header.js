@@ -7,12 +7,6 @@ const Header = () => {
         <header className="header">
             <h1 className="header__title">Gitlery</h1>
             <p className="header__subtitle">GitHub Gallery creator</p>
-
-            <div className="menu-btn">
-                <span className="menu-btn__dot"></span>
-                <span className="menu-btn__dot"></span>
-                <span className="menu-btn__dot"></span>
-            </div>
         </header>
     );
 };
