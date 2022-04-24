@@ -30,10 +30,10 @@
         letter-spacing: 1px;
     }
 
+
     &--repos-not-loaded {
         flex-direction: column;
         row-gap: 1.5rem;
-        margin-top: 30vh;
     }
 
     &--repos-not-loaded &__username-input {
@@ -47,7 +47,13 @@
         font-size: 1rem;
     }
 
-    &--repos-not-loaded &__loading-animation-container {
+
+    &--repos-loading {
+        flex-direction: column;
+        row-gap: 1.5rem;
+    }
+
+    &--repos-loading &__loading-animation-container {
         width: 3rem;
         height: 3rem;
 
@@ -56,7 +62,8 @@
         align-items: center;
         justify-content: center;
     }
-    &--repos-not-loaded &__loading-animation {
+
+    &--repos-loading &__loading-animation {
         width: 2rem;
         height: 2rem;
 
@@ -69,35 +76,35 @@
     }
 }
 
-        @keyframes loading-animation {
-            0% {
-                width: 3rem;
-                height: 2rem;
-                transform: translateX(2rem);
-                opacity: 0;
-            }
-            25% {
-                opacity: 1;
-            }
-            50% {
-                width: 3rem;
-                height: 2rem;
-                transform: translateX(-2rem);
-                opacity: 0;
-            }
-            51% {
-                width: 2rem;
-                height: 3rem;
-                transform: translateX(2rem);
-                opacity: 0;
-            }
-            75% {
-                opacity: 1;
-            }
-            100% {
-                width: 2rem;
-                height: 3rem;
-                transform: translateX(-2rem);
-                opacity: 0;
-            }
-        }
+@keyframes loading-animation {
+    0% {
+        width: 3rem;
+        height: 2rem;
+        transform: translateX(2rem);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        width: 3rem;
+        height: 2rem;
+        transform: translateX(-2rem);
+        opacity: 0;
+    }
+    51% {
+        width: 2rem;
+        height: 3rem;
+        transform: translateX(2rem);
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        width: 2rem;
+        height: 3rem;
+        transform: translateX(-2rem);
+        opacity: 0;
+    }
+}

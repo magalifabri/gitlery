@@ -1,14 +1,24 @@
 import React from 'react';
+import {motion, AnimatePresence} from 'framer-motion';
 import '../styling/Intro.scss';
 
 
 const Intro = ({reposLoaded, repos, setRepos, handleInputKeyDown, loading}) => {
     return (
         <>
-            {
-                reposLoaded ?
-                    // REPOS ARE LOADED: VIEWING ...
-                    <section className="intro intro--repos-loaded">
+            {/*// REPOS ARE LOADED: VIEWING ...*/}
+            <AnimatePresence>
+                {
+                    reposLoaded &&
+                    <motion.section className="intro intro--repos-loaded"
+                                    key={'viewing'}
+                                    layout
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    transition={{delay: .5, duration: .5}}
+                                    exit={{opacity: 0,
+                                        transition: {delay: 0}}}
+                    >
                         <p>viewing gitlery for {repos[0].username}</p>
 
                         {/*<button>save link</button>*/}
@@ -17,37 +27,55 @@ const Intro = ({reposLoaded, repos, setRepos, handleInputKeyDown, loading}) => {
                                 onClick={() => setRepos([])}
                         >new gitlery
                         </button>
-                    </section>
+                    </motion.section>
+                }
+            </AnimatePresence>
 
-                    :
-
-                    // REPOS ARE NOT LOADED: INPUT FIELD OR LOADING ANIMATION
-                    <section className="intro intro--repos-not-loaded">
+            {/*// REPOS ARE NOT LOADED OR LOADING: INPUT FIELD*/}
+            <AnimatePresence>
+                {
+                    !reposLoaded && !loading &&
+                    <motion.section className="intro intro--repos-not-loaded"
+                                    key={'input'}
+                                    layout
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    transition={{delay: .5, duration: .5}}
+                                    exit={{opacity: 0,
+                                        transition: {delay: 0}}}
+                    >
                         <p>Enter a GitHub username to create a gitlery (GitHub
                             gallery) for that user</p>
 
-                        {
-                            !loading ?
-                                // REPOS ARE NOT LOADING: INPUT FIELD
-                                <input className="intro__username-input"
-                                       onKeyDown={handleInputKeyDown}
-                                       type="text"
-                                />
+                        <input className="intro__username-input"
+                               onKeyDown={handleInputKeyDown}
+                               type="text"
+                        />
+                    </motion.section>
+                }
+            </AnimatePresence>
 
-                                :
+            {/*// REPOS ARE LOADING: LOADING ANIMATION*/}
+            <AnimatePresence>
+                {
+                    !reposLoaded && loading &&
+                    <motion.section className="intro intro--repos-loading"
+                                    key={'loading'}
+                                    layout
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    transition={{delay: .5, duration: .5}}
+                                    exit={{opacity: 0,
+                                        transition: {delay: 0}}}
+                    >
+                        <p>loading...</p>
 
-                                // REPOS ARE LOADING: LOADING ANIMATION
-                                <>
-                                    <p>loading...</p>
-                                    <div
-                                        className="intro__loading-animation-container">
-                                        <div
-                                            className="intro__loading-animation"></div>
-                                    </div>
-                                </>
-                        }
-                    </section>
-            }
+                        <div className="intro__loading-animation-container">
+                            <div className="intro__loading-animation"></div>
+                        </div>
+                    </motion.section>
+                }
+            </AnimatePresence>
         </>
     );
 };
