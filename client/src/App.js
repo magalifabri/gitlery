@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Header from "./components/Header";
 import RepoCards from "./components/RepoCards";
 import Modal from "./components/Modal";
+import Intro from "./components/Intro";
 import './styling/general.scss';
 
 const LOCAL_STORAGE_REPOS_KEY = "repos";
@@ -68,28 +69,12 @@ const App = () => {
         <>
             <Header/>
 
-            {
-                !repos.length ?
-                    <section className="intro">
-                        <p>Enter a GitHub username to create a Gitlery (GitHub
-                            gallery) for that user</p>
-
-                        <input className="username-input"
-                               onKeyDown={handleInputKeyDown}
-                               type="text"
-                               placeholder="GitHub username"
-                        />
-                    </section>
-                    :
-                    <section className="intro">
-                        {/*<p>viewing gitlery for [username]</p>*/}
-                        {/*<button>save link</button>*/}
-                        <button onClick={() => setRepos([])}>new gitlery
-                        </button>
-                    </section>
-            }
-
-            {loading ? <p>Loading...</p> : null}
+            <Intro reposLoaded={repos.length > 0}
+                   repos={repos}
+                   setRepos={setRepos}
+                   handleInputKeyDown={handleInputKeyDown}
+                   loading={loading}
+            />
 
             <RepoCards repos={repos}
                        setSelectedRepo={setSelectedRepo}

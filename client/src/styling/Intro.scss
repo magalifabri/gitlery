@@ -1,0 +1,48 @@
+@use 'shared';
+
+.intro {
+    margin: 2rem;
+    color: gray;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+
+    &--repos-loaded {
+        margin-bottom: 2rem;
+        row-gap: .5rem;
+    }
+    &--repos-loaded &__btn {
+        padding: .4rem .8rem;
+
+        border: 1px solid gray;
+        border-radius: 3px;
+
+        font-family: 'Nunito', sans-serif;
+        color: shared.$black;
+        text-transform: uppercase;
+        font-size: .675rem;
+        letter-spacing: 1px;
+    }
+
+    &--repos-not-loaded {
+        row-gap: 1.5rem;
+        margin-top: 30vh;
+    }
+
+    &--repos-not-loaded &__username-input {
+        padding: .5rem 1rem;
+
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+
+        font-family: 'Nunito', sans-serif;
+        font-size: 1rem;
+    }
+}
+
