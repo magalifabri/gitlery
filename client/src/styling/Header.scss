@@ -44,11 +44,16 @@
 
 .menu-btn {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
+    z-index: 1;
+    height: 3rem;
+    width: 3rem;
+    top: .75rem;
+    right: .25rem;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: .3rem;
 
     &__dot {
