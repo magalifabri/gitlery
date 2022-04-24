@@ -1,7 +1,32 @@
 @use 'shared';
 
 .header {
-    margin: max(1rem, 1vw) 0;
+    margin-bottom: 2rem;
+    padding: 1rem 3rem 1rem 1rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    column-gap: 1rem;
+
+    //border-bottom: 5px solid white;
+    //color: white;
+    //background-color: #868686;
+    //box-shadow: inset 0 -10px 20px -20px rgba(0, 0, 0, 0.5);
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid lightgray;
+    color: shared.$black;
+    background-color: shared.$white;
+    background-image: linear-gradient(90deg, white, gray, white);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+
+    &__title-wrapper {
+        flex-shrink: 0;
+    }
 
     &__title {
         font-family: 'Lora', serif;
@@ -14,5 +39,23 @@
         font-size: 1rem;
         text-transform: uppercase;
         font-weight: 400;
+    }
+}
+
+.menu-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+
+    &__dot {
+        display: block;
+        width: 5px;
+        height: 5px;
+        background-color: shared.$black;
+        border-radius: 50%;
     }
 }
