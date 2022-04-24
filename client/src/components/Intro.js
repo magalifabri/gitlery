@@ -7,6 +7,7 @@ const Intro = ({reposLoaded, repos, setRepos, handleInputKeyDown, loading}) => {
         <>
             {
                 reposLoaded ?
+                    // REPOS ARE LOADED: VIEWING ...
                     <section className="intro intro--repos-loaded">
                         <p>viewing gitlery for {repos[0].username}</p>
 
@@ -17,17 +18,34 @@ const Intro = ({reposLoaded, repos, setRepos, handleInputKeyDown, loading}) => {
                         >new gitlery
                         </button>
                     </section>
+
                     :
+
+                    // REPOS ARE NOT LOADED: INPUT FIELD OR LOADING ANIMATION
                     <section className="intro intro--repos-not-loaded">
                         <p>Enter a GitHub username to create a gitlery (GitHub
                             gallery) for that user</p>
 
-                        <input className="intro__username-input"
-                               onKeyDown={handleInputKeyDown}
-                               type="text"
-                        />
+                        {
+                            !loading ?
+                                // REPOS ARE NOT LOADING: INPUT FIELD
+                                <input className="intro__username-input"
+                                       onKeyDown={handleInputKeyDown}
+                                       type="text"
+                                />
 
-                        {loading ? <p>Loading...</p> : null}
+                                :
+
+                                // REPOS ARE LOADING: LOADING ANIMATION
+                                <>
+                                    <p>loading...</p>
+                                    <div
+                                        className="intro__loading-animation-container">
+                                        <div
+                                            className="intro__loading-animation"></div>
+                                    </div>
+                                </>
+                        }
                     </section>
             }
         </>
