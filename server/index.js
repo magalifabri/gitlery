@@ -82,6 +82,7 @@ const getReposWithScreenshots = async repos => {
                     description: repo.description,
                     homepage: repo.homepage,
                     id: uuid(),
+                    username: repo.owner.login,
                 });
             }
         }
