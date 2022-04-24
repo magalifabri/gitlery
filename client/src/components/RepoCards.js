@@ -35,6 +35,7 @@ const RepoCards = ({repos, setSelectedRepo}) => {
                                 initial={{opacity: 0}}
                                 animate={{opacity: 1}}
                                 transition={{delay: .5}}
+                                layout
                     >
                         <img id={repo.id}
                              className="repo-card__screenshot"
