@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {AnimatePresence} from 'framer-motion';
 import Header from "./components/Header";
 import RepoCards from "./components/RepoCards";
 import Modal from "./components/Modal";
@@ -80,6 +81,7 @@ const App = () => {
                        setSelectedRepo={setSelectedRepo}
             />
 
+            <AnimatePresence>
             {
                 selectedRepo &&
                 <Modal repo={repos.find(repo => repo.id === selectedRepo.id)}
@@ -87,6 +89,7 @@ const App = () => {
                        setSelectedRepo={setSelectedRepo}
                 />
             }
+            </AnimatePresence>
         </>
     );
 }

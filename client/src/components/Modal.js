@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from 'react';
+import {motion} from 'framer-motion';
 import '../styling/Modal.scss';
 
 
@@ -64,8 +65,14 @@ const Modal = ({repo, screenshotOrientation, setSelectedRepo}) => {
 
 
     return (
-        <div className={getModalClassNames()}
-             onClick={closeModalOnClick}
+        <motion.div className={getModalClassNames()}
+                    onClick={closeModalOnClick}
+                    key={repo.id}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{duration: .2}}
+                    exit={{opacity: 0,
+                    transition: {duration: .1}}}
         >
             <p className="modal__name"
                ref={nameRef}
@@ -97,7 +104,7 @@ const Modal = ({repo, screenshotOrientation, setSelectedRepo}) => {
                     >homepage</a>
                 }
             </div>
-        </div>
+        </motion.div>
     );
 };
 
