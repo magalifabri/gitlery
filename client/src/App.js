@@ -13,6 +13,7 @@ const App = () => {
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(false);
     const [selectedRepo, setSelectedRepo] = useState(null);
+    const [usernameInputError, setUsernameInputError] = useState('');
 
 
     // load repos from local storage
@@ -73,6 +74,9 @@ const App = () => {
 
             if (successful) {
                 setRepos(foundRepos);
+                setUsernameInputError('');
+            } else {
+                setUsernameInputError(`username '${requestedUser}' not found`)
             }
         }
     };
@@ -87,6 +91,7 @@ const App = () => {
                    setRepos={setRepos}
                    handleInputKeyDown={handleInputKeyDown}
                    loading={loading}
+                   usernameInputError={usernameInputError}
             />
 
             <RepoCards repos={repos}

@@ -3,7 +3,14 @@ import {motion, AnimatePresence} from 'framer-motion';
 import '../styling/Intro.scss';
 
 
-const Intro = ({reposLoaded, repos, setRepos, handleInputKeyDown, loading}) => {
+const Intro = ({
+                   reposLoaded,
+                   repos,
+                   setRepos,
+                   handleInputKeyDown,
+                   loading,
+                   usernameInputError
+               }) => {
     return (
         <>
             {/*// REPOS ARE LOADED: VIEWING ...*/}
@@ -16,8 +23,10 @@ const Intro = ({reposLoaded, repos, setRepos, handleInputKeyDown, loading}) => {
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
                                     transition={{delay: .5, duration: .5}}
-                                    exit={{opacity: 0,
-                                        transition: {delay: 0}}}
+                                    exit={{
+                                        opacity: 0,
+                                        transition: {delay: 0}
+                                    }}
                     >
                         <p>viewing gitlery for {repos[0].username}</p>
 
@@ -41,8 +50,10 @@ const Intro = ({reposLoaded, repos, setRepos, handleInputKeyDown, loading}) => {
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
                                     transition={{delay: .5, duration: .5}}
-                                    exit={{opacity: 0,
-                                        transition: {delay: 0}}}
+                                    exit={{
+                                        opacity: 0,
+                                        transition: {delay: 0}
+                                    }}
                     >
                         <p>Enter a GitHub username to create a gitlery (GitHub
                             gallery) for that user</p>
@@ -51,6 +62,12 @@ const Intro = ({reposLoaded, repos, setRepos, handleInputKeyDown, loading}) => {
                                onKeyDown={handleInputKeyDown}
                                type="text"
                         />
+
+                        {
+                            usernameInputError ?
+                                <p>{usernameInputError}</p>
+                                : null
+                        }
                     </motion.section>
                 }
             </AnimatePresence>
@@ -65,8 +82,10 @@ const Intro = ({reposLoaded, repos, setRepos, handleInputKeyDown, loading}) => {
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
                                     transition={{delay: .5, duration: .5}}
-                                    exit={{opacity: 0,
-                                        transition: {delay: 0}}}
+                                    exit={{
+                                        opacity: 0,
+                                        transition: {delay: 0}
+                                    }}
                     >
                         <p>loading...</p>
 
