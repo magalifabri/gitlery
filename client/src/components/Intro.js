@@ -19,10 +19,9 @@ const Intro = ({
                     reposLoaded &&
                     <motion.section className="intro intro--repos-loaded"
                                     key={'viewing'}
-                                    layout
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
-                                    transition={{delay: .5, duration: .5}}
+                                    transition={{delay: .25, duration: .25}}
                                     exit={{
                                         opacity: 0,
                                         transition: {delay: 0}
@@ -46,10 +45,9 @@ const Intro = ({
                     !reposLoaded && !loading &&
                     <motion.section className="intro intro--repos-not-loaded"
                                     key={'input'}
-                                    layout
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
-                                    transition={{delay: .5, duration: .5}}
+                                    transition={{delay: .25, duration: .25}}
                                     exit={{
                                         opacity: 0,
                                         transition: {delay: 0}
@@ -78,10 +76,10 @@ const Intro = ({
                     !reposLoaded && loading &&
                     <motion.section className="intro intro--repos-loading"
                                     key={'loading'}
-                                    layout
+                                    layout // required to not jump down just before exit
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
-                                    transition={{delay: .5, duration: .5}}
+                                    transition={{delay: .25, duration: .25}}
                                     exit={{
                                         opacity: 0,
                                         transition: {delay: 0}
