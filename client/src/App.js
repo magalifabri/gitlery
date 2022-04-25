@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {AnimatePresence} from 'framer-motion';
 import Header from "./components/Header";
 import RepoCards from "./components/RepoCards";
@@ -14,6 +14,7 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [selectedRepo, setSelectedRepo] = useState(null);
     const [usernameInputError, setUsernameInputError] = useState('');
+    const usernameInputRef = useRef();
 
 
     // load repos from local storage
@@ -63,8 +64,11 @@ const App = () => {
 
 
     const handleInputKeyDown = async ({key, target}) => {
-        if (key === 'Enter') {
-            const requestedUser = target.value;
+        const isEnterKey = key === 'Enter';
+        const isSearchBtn = target.classList.contains('intro__icon');
+
+        if (isEnterKey || isSearchBtn) {
+            const requestedUser = usernameInputRef.current.value;
 
             setLoading(true);
             const [successful, foundRepos] = await getRepos(requestedUser);
@@ -92,6 +96,7 @@ const App = () => {
                    handleInputKeyDown={handleInputKeyDown}
                    loading={loading}
                    usernameInputError={usernameInputError}
+                   usernameInputRef={usernameInputRef}
             />
 
             <RepoCards repos={repos}

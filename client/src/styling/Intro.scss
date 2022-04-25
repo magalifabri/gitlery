@@ -37,6 +37,13 @@
         row-gap: 1.5rem;
     }
 
+    &--repos-not-loaded &__search-bar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .5rem;
+    }
+
     &--repos-not-loaded &__username-input {
         padding: .5rem 1rem;
 
@@ -46,6 +53,11 @@
 
         font-family: 'Nunito', sans-serif;
         font-size: 1rem;
+    }
+
+    &--repos-not-loaded &__icon {
+        cursor: pointer;
+        font-size: 1.5rem;
     }
 
 

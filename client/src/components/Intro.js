@@ -1,5 +1,6 @@
 import React from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
+import { MdSearch } from 'react-icons/md';
 import '../styling/Intro.scss';
 
 
@@ -9,7 +10,8 @@ const Intro = ({
                    setRepos,
                    handleInputKeyDown,
                    loading,
-                   usernameInputError
+                   usernameInputError,
+                   usernameInputRef
                }) => {
     return (
         <>
@@ -56,10 +58,17 @@ const Intro = ({
                         <p>Enter a GitHub username to create a gitlery (GitHub
                             gallery) for that user</p>
 
-                        <input className="intro__username-input"
-                               onKeyDown={handleInputKeyDown}
-                               type="text"
-                        />
+                        <div className="intro__search-bar">
+                            <input className="intro__username-input"
+                                   onKeyDown={handleInputKeyDown}
+                                   ref={usernameInputRef}
+                                   type="text"
+                            />
+
+                            <MdSearch className="intro__icon"
+                                onClick={handleInputKeyDown}
+                            />
+                        </div>
 
                         {
                             usernameInputError ?
