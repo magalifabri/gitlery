@@ -32,10 +32,19 @@ const App = () => {
 
 
     const getRepos = async requestedUser => {
+        let successful;
+        let repos;
+
         await fetch(`/get-repos?requested-user=${requestedUser}`)
-            .then((res) => res.json())
-            .then((data) => setRepos(data.repos));
+            .then(response => response.json())
+            .then(data => {
+                successful = data.successful;
+                repos = data.repos
+            });
+
+        return [successful, repos];
     }
+
 
     //
     // const loadImages = () => {
@@ -57,11 +66,14 @@ const App = () => {
             const requestedUser = target.value;
 
             setLoading(true);
-            await getRepos(requestedUser);
+            const [successful, foundRepos] = await getRepos(requestedUser);
             setLoading(false);
 
             // loadImages();
-            console.log(repos);
+
+            if (successful) {
+                setRepos(foundRepos);
+            }
         }
     };
 

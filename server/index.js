@@ -93,13 +93,21 @@ const getReposWithScreenshots = async repos => {
 
 
 const getReposOfUser = async user => {
-    const response = await fetch(`https://api.github.com/users/${user}/repos?per_page=100`, {
+    let status;
+    let repos;
+
+    await fetch(`https://api.github.com/users/${user}/repos?per_page=100`, {
         headers: {
             'Authorization': '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',
         }
-    });
+    })
+        .then(response => {
+            status = response.status;
+            return response.json();
+        })
+        .then(data => repos = data);
 
-    return await response.json();
+    return [status, repos];
 }
 
 
@@ -118,12 +126,18 @@ app.listen(PORT, () => {
 // Handle GET requests to /get-repos route
 app.get("/get-repos", async (req, res) => {
     const requestedUser = req.query['requested-user'];
-    const repos = await getReposOfUser(requestedUser);
+    const [status, repos] = await getReposOfUser(requestedUser);
+
+    if (status !== 200) {
+        res.json({successful: false, repos: null})
+        return;
+    }
+
     const reposWithScreenshots = await getReposWithScreenshots(repos);
 
     console.log(reposWithScreenshots);
 
-    res.json({repos: reposWithScreenshots});
+    res.json({successful: true, repos: reposWithScreenshots});
 });
 
 // All other GET requests not handled before will return our React app
