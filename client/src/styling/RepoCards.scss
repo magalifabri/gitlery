@@ -1,13 +1,13 @@
 @use 'shared';
 
-.grid-wrapper {
+.repo-card-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: max(5rem, 5vw);
 
-    padding: 0 max(3rem, 3vw);
+    padding: 0 max(3rem, 3vw) max(5rem, 5vh);
 }
 
 .repo-card {

@@ -28,7 +28,7 @@ const RepoCards = ({repos, setSelectedRepo}) => {
 
 
     return (
-        <div className="grid-wrapper"> {
+        <div className="repo-card-container"> {
             repos.map(repo => {
                 return (
                     <motion.div key={repo.id} className="repo-card"
