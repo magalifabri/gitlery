@@ -45,6 +45,19 @@
         row-gap: 1.5rem;
     }
 
+    &--repos-not-loaded &__question-mark {
+        cursor: pointer;
+        margin: 0 .75rem;
+        padding: 0 .3rem;
+
+        border: 1px solid #afafaf;
+        border-radius: 50%;
+
+        font-size: .675rem;
+        font-weight: 700;
+        color: #afafaf;
+    }
+
     &--repos-not-loaded &__search-bar {
         display: flex;
         flex-direction: row;

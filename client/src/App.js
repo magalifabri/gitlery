@@ -86,6 +86,7 @@ const App = () => {
                        loading={loading}
                        usernameInputError={usernameInputError}
                        usernameInputRef={usernameInputRef}
+                       setInfoModalVisible={setInfoModalVisible}
                 />
 
                 {

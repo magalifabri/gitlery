@@ -11,7 +11,8 @@ const Intro = ({
                    handleInputKeyDown,
                    loading,
                    usernameInputError,
-                   usernameInputRef
+                   usernameInputRef,
+                   setInfoModalVisible
                }) => {
 
 
@@ -66,8 +67,11 @@ const Intro = ({
                                         transition: {delay: 0}
                                     }}
                     >
-                        <p>Enter a GitHub username to create a gitlery (GitHub
-                            gallery) for that user</p>
+                        <p>Enter a GitHub username to create a gitlery for that user
+                            <span className="intro__question-mark"
+                                  onClick={() => setInfoModalVisible(true)}
+                            >?</span>
+                        </p>
 
                         <div className="intro__search-bar">
                             <input className="intro__username-input"
