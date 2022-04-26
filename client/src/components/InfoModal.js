@@ -40,7 +40,8 @@ const InfoModal = ({setModalVisible}) => {
         >
             <div className="info-modal__window">
                 <p className="info-modal__line big-text">How It Works</p>
-                <p className="info-modal__line">Gitlery looks for a screenshot in the readme of the repositories for the given username.</p>
+                <p className="info-modal__line">Gitlery checks the repositories for the given username and looks for a screenshot in each readme.</p>
+                <p>With the found screenshots it creates an image gallery.</p>
                 <p className="info-modal__line">The following rules are followed in the search:</p>
                 <ul>
                     <li>the repository is public</li>
