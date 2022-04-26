@@ -5,7 +5,9 @@ import RepoCards from "./components/RepoCards";
 import Modal from "./components/Modal";
 import Intro from "./components/Intro";
 import Footer from "./components/Footer";
-import InfoModal from "./components/InfoModal";
+import InfoModalChild from "./components/InfoModalChild";
+import SaveModalChild from "./components/SaveModalChild";
+import ModalContainer from "./containers/ModalContainer";
 import './styling/general.scss';
 
 const LOCAL_STORAGE_REPOS_KEY = "repos";
@@ -17,6 +19,7 @@ const App = () => {
     const [selectedRepo, setSelectedRepo] = useState(null);
     const [usernameInputError, setUsernameInputError] = useState('');
     const [infoModalVisible, setInfoModalVisible] = useState(false)
+    const [saveModalVisible, setSaveModalVisible] = useState(false);
     const usernameInputRef = useRef();
 
 
@@ -86,6 +89,8 @@ const App = () => {
         }).then(res => {
             console.log("Request complete! response:", res);
         });
+
+        setSaveModalVisible(true);
     };
 
 
@@ -127,7 +132,18 @@ const App = () => {
                 <AnimatePresence>
                     {
                         infoModalVisible &&
-                        <InfoModal setInfoModalVisible={setInfoModalVisible}/>
+                        <ModalContainer setModalVisible={setInfoModalVisible}>
+                            <InfoModalChild/>
+                        </ModalContainer>
+                    }
+                </AnimatePresence>
+
+                <AnimatePresence>
+                    {
+                        saveModalVisible &&
+                        <ModalContainer setModalVisible={setSaveModalVisible}>
+                            <SaveModalChild username={repos[0].username}/>
+                        </ModalContainer>
                     }
                 </AnimatePresence>
 
