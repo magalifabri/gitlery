@@ -37,17 +37,13 @@ const App = () => {
 
 
     const getRepos = async requestedUser => {
-        let successful;
-        let repos;
+        let responseData;
 
         await fetch(`/get-repos?requested-user=${requestedUser}`)
             .then(response => response.json())
-            .then(data => {
-                successful = data.successful;
-                repos = data.repos
-            });
+            .then(data => responseData = data);
 
-        return [successful, repos];
+        return responseData;
     }
 
 
@@ -59,14 +55,14 @@ const App = () => {
             const requestedUser = usernameInputRef.current.value;
 
             setLoading(true);
-            const [successful, foundRepos] = await getRepos(requestedUser);
+            const responseData = await getRepos(requestedUser);
             setLoading(false);
 
-            if (successful) {
-                setRepos(foundRepos);
+            if (responseData.successful) {
+                setRepos(responseData.repos);
                 setUsernameInputError('');
             } else {
-                setUsernameInputError(`username '${requestedUser}' not found`)
+                setUsernameInputError(responseData.message)
             }
         }
     };

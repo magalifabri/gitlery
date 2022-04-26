@@ -129,15 +129,31 @@ app.get("/get-repos", async (req, res) => {
     const [status, repos] = await getReposOfUser(requestedUser);
 
     if (status !== 200) {
-        res.json({successful: false, repos: null})
+        res.json({
+            successful: false,
+            repos: null,
+            message: `username '${requestedUser}' not found`
+        });
         return;
     }
 
     const reposWithScreenshots = await getReposWithScreenshots(repos);
 
-    console.log(reposWithScreenshots);
+    console.log(reposWithScreenshots.length + ' suitable repos found');
+    if (reposWithScreenshots.length === 0) {
+        res.json({
+            successful: false,
+            repos: null,
+            message: `no suitable repositories found for ${requestedUser}`
+        });
+        return;
+    }
 
-    res.json({successful: true, repos: reposWithScreenshots});
+    res.json({
+        successful: true,
+        repos: reposWithScreenshots,
+        message: ''
+    });
 });
 
 // All other GET requests not handled before will return our React app
