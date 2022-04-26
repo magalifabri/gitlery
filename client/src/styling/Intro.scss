@@ -9,7 +9,7 @@
 
 .intro {
     position: absolute;
-    color: gray;
+    color: shared.$darkGray;
     text-align: center;
 
     display: flex;
@@ -22,21 +22,6 @@
         flex-wrap: wrap;
         margin-bottom: 2rem;
         row-gap: .5rem;
-    }
-
-    &--repos-loaded &__btn {
-        cursor: pointer;
-        padding: .4rem .8rem;
-
-        border: 1px solid gray;
-        border-radius: 3px;
-        background-color: transparent;
-
-        font-family: 'Nunito', sans-serif;
-        color: shared.$black;
-        text-transform: uppercase;
-        font-size: .675rem;
-        letter-spacing: 1px;
     }
 
 
@@ -79,6 +64,7 @@
     &--repos-not-loaded &__icon {
         cursor: pointer;
         font-size: 1.5rem;
+        color: shared.$gray;
     }
 
     &__error_msg {

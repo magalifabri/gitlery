@@ -45,7 +45,7 @@ const Intro = ({
 
                         {/*<button>save link</button>*/}
 
-                        <button className="intro__btn"
+                        <button className="intro__btn btn"
                                 onClick={() => setRepos([])}
                         >new gitlery
                         </button>

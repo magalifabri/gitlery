@@ -9,7 +9,7 @@ const Footer = ({setInfoModalVisible}) => {
 
 
             <footer className="footer">
-                <motion.span className="footer__info-link"
+                <motion.span className="footer__info-link btn"
                       onClick={() => setInfoModalVisible(true)}
                              layout
                 >info</motion.span>

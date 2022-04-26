@@ -12,7 +12,6 @@
 
     display: grid;
     grid-gap: 5vh;
-    //align-content: center;
     align-items: center;
     justify-items: center;
 
@@ -26,7 +25,6 @@
         border: 5px solid white;
         border-radius: 5px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        color: shared.$black;
     }
 
     &__line {
@@ -41,7 +39,7 @@
     }
 
     &__link {
-        color: gray;
+        color: #3287b2;
         font-weight: 700;
         text-decoration: none;
     }
