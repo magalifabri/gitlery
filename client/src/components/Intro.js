@@ -12,7 +12,8 @@ const Intro = ({
                    loading,
                    usernameInputError,
                    usernameInputRef,
-                   setInfoModalVisible
+                   setInfoModalVisible,
+                   saveGitlery
                }) => {
 
 
@@ -43,12 +44,17 @@ const Intro = ({
                     >
                         <p>viewing gitlery for {repos[0].username}</p>
 
-                        {/*<button>save link</button>*/}
+                        <div className="intro__button-wrapper">
+                            <button className="intro__btn btn"
+                                    onClick={saveGitlery}
+                            >save
+                            </button>
 
-                        <button className="intro__btn btn"
-                                onClick={() => setRepos([])}
-                        >new gitlery
-                        </button>
+                            <button className="intro__btn btn"
+                                    onClick={() => setRepos([])}
+                            >new
+                            </button>
+                        </div>
                     </motion.section>
                 }
             </AnimatePresence>

@@ -73,6 +73,22 @@ const App = () => {
     };
 
 
+    const saveGitlery = async () => {
+        let data = {
+            username: repos[0].username,
+            repos: JSON.stringify(repos)
+        };
+
+        fetch("/create-gitlery", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        }).then(res => {
+            console.log("Request complete! response:", res);
+        });
+    };
+
+
     return (
         <>
             <Header/>
@@ -87,6 +103,7 @@ const App = () => {
                        usernameInputError={usernameInputError}
                        usernameInputRef={usernameInputRef}
                        setInfoModalVisible={setInfoModalVisible}
+                       saveGitlery={saveGitlery}
                 />
 
                 {

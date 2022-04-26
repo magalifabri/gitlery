@@ -17,6 +17,12 @@
     align-items: center;
     column-gap: 3rem;
 
+    &--repos-loaded &__button-wrapper{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
     &--repos-loaded {
         flex-direction: row;
         flex-wrap: wrap;
