@@ -54,6 +54,11 @@ const App = () => {
         if (isEnterKey || isSearchBtn) {
             const requestedUser = usernameInputRef.current.value;
 
+            if (requestedUser === '') {
+                setUsernameInputError('enter a username')
+                return ;
+            }
+
             setLoading(true);
             const responseData = await getRepos(requestedUser);
             setLoading(false);
