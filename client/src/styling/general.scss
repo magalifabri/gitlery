@@ -6,7 +6,7 @@
 font-family: 'Noto Serif', serif;
 font-family: 'Nunito', sans-serif;
 font-family: 'Lora', serif;
- */
+*/
 
 
 * {
@@ -19,6 +19,7 @@ font-family: 'Lora', serif;
 
 body {
     min-width: 300px;
+    //min-height: 100vh;
     //max-width: 700px;
     //padding: max(1rem, 1vw) max(3rem, 3vw);
 
@@ -29,6 +30,36 @@ body {
     color: shared.$black;
 }
 
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1;
+}
+
 p {
     line-height: 1.5;
+}
+
+ul {
+    margin-left: 1.5rem;
+}
+
+li {
+    line-height: 1.5;
+}
+
+
+// STYLE MODULES
+
+.text-center {
+    text-align: center;
+}
+
+.big-text {
+    font-size: 1.25rem;
+    font-weight: 700;
 }

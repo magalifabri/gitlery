@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import RepoCards from "./components/RepoCards";
 import Modal from "./components/Modal";
 import Intro from "./components/Intro";
+import Footer from "./components/Footer";
+import InfoModal from "./components/InfoModal";
 import './styling/general.scss';
 
 const LOCAL_STORAGE_REPOS_KEY = "repos";
@@ -14,6 +16,7 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [selectedRepo, setSelectedRepo] = useState(null);
     const [usernameInputError, setUsernameInputError] = useState('');
+    const [modalVisible, setModalVisible] = useState(false)
     const usernameInputRef = useRef();
 
 
@@ -90,28 +93,41 @@ const App = () => {
         <>
             <Header/>
 
-            <Intro reposLoaded={repos.length > 0}
-                   repos={repos}
-                   setRepos={setRepos}
-                   handleInputKeyDown={handleInputKeyDown}
-                   loading={loading}
-                   usernameInputError={usernameInputError}
-                   usernameInputRef={usernameInputRef}
-            />
+            <main className="main">
 
-            <RepoCards repos={repos}
-                       setSelectedRepo={setSelectedRepo}
-            />
-
-            <AnimatePresence>
-            {
-                selectedRepo &&
-                <Modal repo={repos.find(repo => repo.id === selectedRepo.id)}
-                       screenshotOrientation={selectedRepo.screenshotOrientation}
-                       setSelectedRepo={setSelectedRepo}
+                <Intro reposLoaded={repos.length > 0}
+                       repos={repos}
+                       setRepos={setRepos}
+                       handleInputKeyDown={handleInputKeyDown}
+                       loading={loading}
+                       usernameInputError={usernameInputError}
+                       usernameInputRef={usernameInputRef}
                 />
-            }
-            </AnimatePresence>
+
+                <RepoCards repos={repos}
+                           setSelectedRepo={setSelectedRepo}
+                />
+
+                <AnimatePresence>
+                {
+                    selectedRepo &&
+                    <Modal repo={repos.find(repo => repo.id === selectedRepo.id)}
+                           screenshotOrientation={selectedRepo.screenshotOrientation}
+                           setSelectedRepo={setSelectedRepo}
+                    />
+                }
+                </AnimatePresence>
+
+                <AnimatePresence>
+                    {
+                        modalVisible &&
+                        <InfoModal setModalVisible={setModalVisible}/>
+                    }
+                </AnimatePresence>
+
+            </main>
+
+            <Footer setModalVisible={setModalVisible}/>
         </>
     );
 }

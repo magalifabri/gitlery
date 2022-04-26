@@ -1,0 +1,48 @@
+@use 'shared';
+
+.info-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 5vh 5vw;
+
+    background-color: rgba(0, 0, 0, 0.8);
+
+    display: grid;
+    grid-gap: 5vh;
+    //align-content: center;
+    align-items: center;
+    justify-items: center;
+
+    &__window {
+        overflow: scroll;
+        max-height: 80%;
+        padding: 1.5rem 2rem;
+        max-width: 500px;
+
+        background-color: shared.$veryLightGray;
+        border: 5px solid white;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        color: shared.$black;
+    }
+
+    &__line {
+        margin: .75rem 0;
+    }
+
+    &__hr {
+        width: 80%;
+        margin: 2rem auto;
+        border: none;
+        border-top: 1px solid lightgray;
+    }
+
+    &__link {
+        color: gray;
+        font-weight: 700;
+        text-decoration: none;
+    }
+}

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
-import { MdSearch } from 'react-icons/md';
+import {MdSearch} from 'react-icons/md';
 import '../styling/Intro.scss';
 
 
@@ -13,8 +13,19 @@ const Intro = ({
                    usernameInputError,
                    usernameInputRef
                }) => {
+
+
+    useEffect(() => {
+        const introHeight = document.querySelector('.intro').clientHeight;
+        const introContainer = document.querySelector('.intro-container');
+
+        introContainer.style.height = introHeight + 'px';
+    }, [reposLoaded, loading]);
+
+
     return (
-        <>
+        <div className="intro-container">
+
             {/*// REPOS ARE LOADED: VIEWING ...*/}
             <AnimatePresence>
                 {
@@ -66,7 +77,7 @@ const Intro = ({
                             />
 
                             <MdSearch className="intro__icon"
-                                onClick={handleInputKeyDown}
+                                      onClick={handleInputKeyDown}
                             />
                         </div>
 
@@ -102,7 +113,7 @@ const Intro = ({
                     </motion.section>
                 }
             </AnimatePresence>
-        </>
+        </div>
     );
 };
 

@@ -1,0 +1,23 @@
+@use 'shared';
+
+.footer {
+    display: flex;
+    justify-content: right;
+
+    &__info-link {
+        cursor: pointer;
+        display: inline-block;
+        margin: 1rem;
+        padding: .4rem .8rem;
+
+        border: 1px solid gray;
+        border-radius: 3px;
+        background-color: transparent;
+
+        font-family: 'Nunito', sans-serif;
+        color: shared.$black;
+        text-transform: uppercase;
+        font-size: .657rem;
+        letter-spacing: 1px;
+    }
+}
