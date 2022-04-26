@@ -51,21 +51,6 @@ const App = () => {
     }
 
 
-    //
-    // const loadImages = () => {
-    //     const newRepos = [...repos];
-    //
-    //     newRepos.map(repo => {
-    //         const screenshot = new Image();
-    //         screenshot.onload = () => console.log('loaded');
-    //         screenshot.src = repo.screenshotUrl;
-    //         return repo['screenshot'] = screenshot;
-    //     });
-    //
-    //     setRepos(newRepos);
-    // }
-
-
     const handleInputKeyDown = async ({key, target}) => {
         const isEnterKey = key === 'Enter';
         const isSearchBtn = target.classList.contains('intro__icon');
@@ -76,8 +61,6 @@ const App = () => {
             setLoading(true);
             const [successful, foundRepos] = await getRepos(requestedUser);
             setLoading(false);
-
-            // loadImages();
 
             if (successful) {
                 setRepos(foundRepos);
@@ -104,18 +87,22 @@ const App = () => {
                        usernameInputRef={usernameInputRef}
                 />
 
-                <RepoCards repos={repos}
-                           setSelectedRepo={setSelectedRepo}
-                />
-
-                <AnimatePresence>
                 {
-                    selectedRepo &&
-                    <Modal repo={repos.find(repo => repo.id === selectedRepo.id)}
-                           screenshotOrientation={selectedRepo.screenshotOrientation}
-                           setSelectedRepo={setSelectedRepo}
+                    repos.length > 0 &&
+                    <RepoCards repos={repos}
+                               setSelectedRepo={setSelectedRepo}
                     />
                 }
+
+                <AnimatePresence>
+                    {
+                        selectedRepo &&
+                        <Modal
+                            repo={repos.find(repo => repo.id === selectedRepo.id)}
+                            screenshotOrientation={selectedRepo.screenshotOrientation}
+                            setSelectedRepo={setSelectedRepo}
+                        />
+                    }
                 </AnimatePresence>
 
                 <AnimatePresence>
