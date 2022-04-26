@@ -160,3 +160,25 @@ app.get("/get-repos", async (req, res) => {
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
+
+
+// CRUD - DB LOGIC
+
+const pool = require('./db');
+
+app.use(express.json());
+
+app.post("/create-gitlery", async (req, res) => {
+    try {
+        const {username, repos} = req.body;
+
+        const newDbEntry = await pool.query(
+            "INSERT INTO gitleries (username, repos) VALUES($1, $2)",
+            [username, repos]
+        );
+
+        res.json(newDbEntry);
+    } catch (e) {
+        console.log(e);
+    }
+})
