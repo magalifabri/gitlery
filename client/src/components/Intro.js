@@ -83,7 +83,7 @@ const Intro = ({
 
                         {
                             usernameInputError ?
-                                <p>{usernameInputError}</p>
+                                <p className="intro__error_msg">{usernameInputError}</p>
                                 : null
                         }
                     </motion.section>

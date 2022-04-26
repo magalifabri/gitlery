@@ -68,6 +68,11 @@
         font-size: 1.5rem;
     }
 
+    &__error_msg {
+        color: red;
+        font-weight: 600;
+    }
+
 
     &--repos-loading {
         flex-direction: column;
