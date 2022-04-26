@@ -16,7 +16,7 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [selectedRepo, setSelectedRepo] = useState(null);
     const [usernameInputError, setUsernameInputError] = useState('');
-    const [modalVisible, setModalVisible] = useState(false)
+    const [infoModalVisible, setInfoModalVisible] = useState(false)
     const usernameInputRef = useRef();
 
 
@@ -108,14 +108,14 @@ const App = () => {
 
                 <AnimatePresence>
                     {
-                        modalVisible &&
-                        <InfoModal setModalVisible={setModalVisible}/>
+                        infoModalVisible &&
+                        <InfoModal setInfoModalVisible={setInfoModalVisible}/>
                     }
                 </AnimatePresence>
 
             </main>
 
-            <Footer setModalVisible={setModalVisible}/>
+            <Footer setInfoModalVisible={setInfoModalVisible}/>
         </>
     );
 }

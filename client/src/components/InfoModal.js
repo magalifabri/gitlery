@@ -3,12 +3,12 @@ import {motion} from "framer-motion";
 import '../styling/InfoModal.scss';
 
 
-const InfoModal = ({setModalVisible}) => {
+const InfoModal = ({setInfoModalVisible}) => {
 
     useEffect(() => {
         const closeModalOnEcs = ({key}) => {
             if (key === 'Escape') {
-                setModalVisible(false);
+                setInfoModalVisible(false);
             }
         };
 
@@ -22,7 +22,7 @@ const InfoModal = ({setModalVisible}) => {
 
     const closeModalOnClick = (event) => {
         if (event.target.classList.contains('info-modal')) {
-            setModalVisible(false);
+            setInfoModalVisible(false);
         }
     }
 
