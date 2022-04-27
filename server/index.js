@@ -173,7 +173,7 @@ app.post("/create-gitlery", async (req, res) => {
     }
 })
 
-app.get("/load-gitlery/:username", async (req, res) => {
+app.get("/get-gitlery/:username", async (req, res) => {
     const {username} = req.params;
 
     try {

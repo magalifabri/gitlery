@@ -7,7 +7,7 @@ const LoadGitlery = ({setRepos}) => {
     const loadRepos = async username => {
         let responseData;
 
-        await fetch(`/load-gitlery/${username}`)
+        await fetch(`/get-gitlery/${username}`)
             .then(response => response.json())
             .then(data => responseData = data);
 

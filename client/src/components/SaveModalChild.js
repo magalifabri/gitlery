@@ -10,8 +10,8 @@ const SaveModalChild = ({username}) => {
                 gitlery:</p>
             <p className="modal-container__line">
                 <a className="modal-container__link"
-                    // href={`https://localhost/load-gitlery?username=${username}`}>https://gitlery.herokuapp.com/load-gitlery?username={username}</a>
-                   href={`https://gitlery.herokuapp.com/load-gitlery?username=${username}`}>https://gitlery.herokuapp.com/load-gitlery?username={username}</a>
+                    // href={`http://localhost:3000/load-gitlery/${username}`}>https://gitlery.herokuapp.com/load-gitlery/{username}</a>
+                   href={`https://gitlery.herokuapp.com/load-gitlery/${username}`}>https://gitlery.herokuapp.com/load-gitlery/{username}</a>
             </p>
         </>
     );
