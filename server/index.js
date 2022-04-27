@@ -96,10 +96,8 @@ const getReposOfUser = async user => {
     let status;
     let repos;
 
-    await fetch(`https://api.github.com/users/${user}/repos?per_page=100`, {
-        headers: {
-            'Authorization': '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',
-        }
+    await fetch(`https://api.github.com/users/${user}/repos?per_page=1000`, {
+        headers: {'Authorization': process.env.GITHUB_API_KEY}
     })
         .then(response => {
             status = response.status;
