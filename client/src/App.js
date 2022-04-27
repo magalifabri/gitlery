@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {AnimatePresence} from 'framer-motion';
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Header from "./components/Header";
 import RepoCards from "./components/RepoCards";
 import Modal from "./components/Modal";
@@ -8,6 +9,7 @@ import Footer from "./components/Footer";
 import InfoModalChild from "./components/InfoModalChild";
 import SaveModalChild from "./components/SaveModalChild";
 import ModalContainer from "./containers/ModalContainer";
+import LoadGitlery from "./components/LoadGitlery";
 import './styling/general.scss';
 
 const LOCAL_STORAGE_REPOS_KEY = "repos";
@@ -59,7 +61,7 @@ const App = () => {
 
             if (requestedUser === '') {
                 setUsernameInputError('enter a username')
-                return ;
+                return;
             }
 
             setLoading(true);
@@ -95,7 +97,17 @@ const App = () => {
 
 
     return (
-        <>
+        <Router>
+            <Routes>
+                {
+                    repos.length === 0 &&
+                    <Route path="/load-gitlery/:username"
+                           element={<LoadGitlery setRepos={setRepos}/>}
+                    >
+                    </Route>
+                }
+            </Routes>
+
             <Header/>
 
             <main className="main">
@@ -150,7 +162,8 @@ const App = () => {
             </main>
 
             <Footer setInfoModalVisible={setInfoModalVisible}/>
-        </>
+
+        </Router>
     );
 }
 

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import {MdSearch} from 'react-icons/md';
 import '../styling/Intro.scss';
+import {useNavigate} from "react-router-dom";
 
 
 const Intro = ({
@@ -15,6 +16,8 @@ const Intro = ({
                    setInfoModalVisible,
                    saveGitlery
                }) => {
+
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -46,12 +49,18 @@ const Intro = ({
 
                         <div className="intro__button-wrapper">
                             <button className="intro__btn btn"
-                                    onClick={saveGitlery}
+                                    onClick={() => {
+                                        saveGitlery();
+                                        navigate(`/load-gitlery/${repos[0].username}`);
+                                    }}
                             >save
                             </button>
 
                             <button className="intro__btn btn"
-                                    onClick={() => setRepos([])}
+                                    onClick={() => {
+                                        setRepos([]);
+                                        navigate("/");
+                                    }}
                             >new
                             </button>
                         </div>
