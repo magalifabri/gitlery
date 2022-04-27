@@ -116,12 +116,7 @@ app.listen(PORT, () => {
 });
 
 // Have Node serve the files for our built React app
-// app.use(express.static(path.resolve(__dirname, '../client/build')));
-
-// Handle GET requests to /api route
-// app.get("/api", (req, res) => {
-//     res.json({message: "Hello from server!"});
-// });
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /get-repos route
 app.get("/get-repos", async (req, res) => {
@@ -156,13 +151,8 @@ app.get("/get-repos", async (req, res) => {
     });
 });
 
-// All other GET requests not handled before will return our React app
-// app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-// });
 
-
-// CRUD - DB LOGIC
+// CRUD - DB OPERATIONS
 
 const pool = require('./db');
 
@@ -197,3 +187,9 @@ app.get("/load-gitlery/:username", async (req, res) => {
         console.log(e.message)
     }
 })
+
+
+// All other GET requests not handled before will return our React app
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
