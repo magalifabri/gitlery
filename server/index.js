@@ -116,7 +116,7 @@ app.listen(PORT, () => {
 });
 
 // Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+// app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
 // app.get("/api", (req, res) => {
@@ -157,9 +157,9 @@ app.get("/get-repos", async (req, res) => {
 });
 
 // All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+// });
 
 
 // CRUD - DB LOGIC
@@ -173,12 +173,27 @@ app.post("/create-gitlery", async (req, res) => {
         const {username, repos} = req.body;
 
         const newDbEntry = await pool.query(
-            "INSERT INTO gitleries (username, repos) VALUES($1, $2)",
+            "INSERT INTO gitleries (username, repos) VALUES($1, $2) RETURNING *",
             [username, repos]
         );
 
         res.json(newDbEntry);
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
+    }
+})
+
+app.get("/load-gitlery/:username", async (req, res) => {
+    const {username} = req.params;
+
+    try {
+        const repos = await pool.query (
+            "SELECT * FROM gitleries WHERE username = $1",
+            [username]
+        );
+
+        res.json(repos.rows[0].repos);
+    } catch (e) {
+        console.log(e.message)
     }
 })
